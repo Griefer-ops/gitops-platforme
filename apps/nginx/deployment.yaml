@@ -7,17 +7,20 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels:
-      app: nginx
+    matchLabels: { app: nginx }
   template:
     metadata:
-      labels:
-        app: nginx
+      labels: { app: nginx }
     spec:
       containers:
       - name: nginx
         image: nginx:latest
         ports:
         - containerPort: 80
-          hostPort: 80
-
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html-volume
+        configMap:
+          name: nginx-html
