@@ -4,10 +4,100 @@ metadata:
   name: nginx-html
 data:
   index.html: |
-    <html>
-    <head><title>Bienvenue sur mon Nginx personnalisé</title></head>
-    <body style="text-align:center; font-family:sans-serif;">
-      <h1 style="color:green;">🚀 Nginx déployé avec FluxCD et K3s</h1>
-      <p>Page modifiée avec un ConfigMap</p>
+    <!doctype html>
+    <html lang="fr">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>MedTech — Innovation Santé</title>
+      <style>
+        :root{
+          --bg:#0f172a;          /* bleu nuit */
+          --card:#111827;        /* gris foncé */
+          --muted:#94a3b8;       /* gris-bleu */
+          --primary:#22c55e;     /* vert */
+          --accent:#38bdf8;      /* bleu clair */
+          --white:#ffffff;
+          --shadow:0 10px 30px rgba(0,0,0,.25);
+          --radius:18px;
+        }
+        *{box-sizing:border-box}
+        html,body{margin:0;background:linear-gradient(120deg,#0b1226 0%,#0f172a 40%,#0a1a2f 100%);color:var(--white);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+        a{color:var(--accent);text-decoration:none}
+        .container{max-width:1100px;margin:0 auto;padding:28px}
+        .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+        .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.3px}
+        .badge{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--primary));box-shadow:var(--shadow)}
+        .cta{background:var(--primary);padding:10px 16px;border-radius:12px;color:#052e12;font-weight:700}
+        .hero{margin-top:32px;padding:36px;border-radius:var(--radius);background:
+          radial-gradient(1200px 500px at -10% -20%, rgba(56,189,248,.15), transparent 50%),
+          radial-gradient(1000px 400px at 120% -10%, rgba(34,197,94,.15), transparent 50%),
+          linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+          border:1px solid rgba(148,163,184,.15);
+          box-shadow:var(--shadow);
+        }
+        .hero h1{font-size:40px;line-height:1.15;margin:0 0 8px}
+        .hero p{margin:0;color:var(--muted);max-width:800px}
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+        .card{background:var(--card);border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+        .card h3{margin:0 0 6px;font-size:18px}
+        .kpi{display:flex;gap:14px;margin-top:8px}
+        .pill{padding:6px 10px;border-radius:999px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25);font-size:12px;color:#e2f5ff}
+        .foot{margin:30px 0 10px;color:var(--muted);font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
+        @media (max-width:900px){.grid{grid-template-columns:1fr}}
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="nav">
+          <div class="brand"><div class="badge"></div> MedTech</div>
+          <a class="cta" href="#contact">Nous contacter</a>
+        </div>
+
+        <section class="hero">
+          <h1>MedTech — Accélérer l’innovation en santé</h1>
+          <p>
+            Nous concevons des solutions logicielles et IoT pour les acteurs de la santé :
+            télésurveillance, imagerie augmentée et traçabilité intelligente. Fiables, sécurisées,
+            et prêtes pour l’échelle.
+          </p>
+          <div class="kpi">
+            <div class="pill">99.95% disponibilité</div>
+            <div class="pill">Interopérable HL7/FHIR</div>
+            <div class="pill">Conformité RGPD</div>
+          </div>
+        </section>
+
+        <section class="grid">
+          <article class="card">
+            <h3>À propos</h3>
+            <p>
+              MedTech est une entreprise spécialisée dans les plateformes de santé connectée.
+              Notre mission : améliorer le parcours patient grâce à la donnée et à l’automatisation.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Produits</h3>
+            <ul style="margin:0;padding-left:18px;color:#dbeafe">
+              <li>RemoteCare — télésuivi patient en temps réel</li>
+              <li>ImageX — imagerie assistée par IA</li>
+              <li>TraceOne — traçabilité bloc & DM</li>
+            </ul>
+          </article>
+
+          <article class="card" id="contact">
+            <h3>Contact</h3>
+            <p>Équipe commerciale : <a href="mailto:contact@medtech.example">contact@medtech.example</a><br/>
+               Recrutement : <a href="mailto:jobs@medtech.example">jobs@medtech.example</a></p>
+          </article>
+        </section>
+
+        <div class="foot">
+          © <span id="y"></span> MedTech — Tous droits réservés • Sécurité & conformité au cœur de nos solutions
+        </div>
+      </div>
+      <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
     </body>
     </html>
+
