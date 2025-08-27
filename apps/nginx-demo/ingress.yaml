@@ -15,4 +15,7 @@ spec:
                 name: nginx-demo
                 port:
                   number: 80
-
+  tls:
+    - hosts:
+        - 192.168.100.89.nip.io
+      secretName: nginx-demo-tls

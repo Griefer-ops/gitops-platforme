@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nginx-demo-cert
+  namespace: medtech
+spec:
+  secretName: nginx-demo-tls
+  dnsNames:
+    - 192.168.100.89.nip.io
+  issuerRef:
+    name: selfsigned-cluster
+    kind: ClusterIssuer

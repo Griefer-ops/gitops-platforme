@@ -1,7 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./kustomizations/image-automation.yaml
   - ./kustomizations/metallb-operator.yaml
   - ./kustomizations/metallb-config.yaml
+  - ./kustomizations/cert-manager-operator.yaml
+  - ./kustomizations/cert-manager-issuers.yaml
   - ./kustomizations/apps.yaml
