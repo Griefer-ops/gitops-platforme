@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: medtech-web
+  namespace: medtech
+spec:
+  selector: { app: medtech-web }
+  ports:
+  - port: 80
+    targetPort: 80
