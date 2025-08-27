@@ -1,0 +1,25 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: ton-app-autoupdate
+  namespace: flux-system
+spec:
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        name: fluxcdbot
+        email: fluxcdbot@users.noreply.github.com
+      messageTemplate: "chore(image): update {{range .Updated.Images}}{{println .}}{{end}}"
+    push:
+      branch: main
+  update:
+    strategy: Setters
+    path: ./apps/nginx-demo
