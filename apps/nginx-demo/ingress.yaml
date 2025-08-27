@@ -2,11 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-demo
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
+  ingressClassName: traefik
   rules:
-    - host: CHANGEME.nip.io
+    - host: 192.168.100.89.nip.io
       http:
         paths:
           - path: /
@@ -16,3 +15,4 @@ spec:
                 name: nginx-demo
                 port:
                   number: 80
+
