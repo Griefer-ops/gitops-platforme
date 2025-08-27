@@ -1,127 +1,175 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>EMSI — École Marocaine des Sciences de l’Ingénieur</title>
-  <meta name="description" content="EMSI — Excellence, innovation et esprit d’ingénieur au Maroc." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="EMSI : excellence, innovation et esprit d’ingénieur au Maroc."/>
   <style>
-    :root{--bg:#0b1221;--fg:#ffffff;--muted:#a9b1c7;--primary:#00b894;--accent:#00d1ff;--card:#101a33;--card2:#0e1630}
+    :root{
+      --bg:#0b1221; --panel:#101a33; --panel2:#0f1b3d; --text:#eaf0ff; --muted:#a9b1c7;
+      --pri:#00d1ff; --sec:#00b894; --line:rgba(255,255,255,.08);
+      --shadow: 0 10px 35px rgba(0,0,0,.35), 0 2px 10px rgba(0,0,0,.2);
+      --radius:18px;
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;height:100%;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji"}
-    body{background:linear-gradient(180deg,var(--bg),#0e1730 40%,#0b1221);color:var(--fg)}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;background:rgba(11,18,33,.7);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid rgba(255,255,255,.08);z-index:10}
-    nav{display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
-    .brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:grid;place-items:center;color:#001018;font-weight:800}
-    .nav-links{display:flex;gap:18px;font-weight:500;color:var(--muted)}
-    .btn{padding:10px 16px;border-radius:12px;font-weight:600;border:1px solid rgba(255,255,255,.12);transition:.2s}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
-    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--accent));color:#041019;border:none}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:48px 0}
-    .headline{font-size:46px;line-height:1.1;margin:0 0 12px}
-    .sub{color:var(--muted);font-size:18px}
-    .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .tag{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(0,217,255,.12);color:#7ee0ff;border:1px solid rgba(0,217,255,.25);font-size:12px}
-    .section{padding:24px 0}
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;text-align:center}
-    .stat b{font-size:28px;display:block}
-    footer{margin-top:40px;padding:32px 0;color:#8893ad;border-top:1px solid rgba(255,255,255,.08)}
-    @media (max-width:960px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 70% -10%,#173162 0%,transparent 60%) ,var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--pri);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    .nav{position:sticky;top:0;backdrop-filter:saturate(140%) blur(6px);background:rgba(11,18,33,.65);border-bottom:1px solid var(--line);z-index:20}
+    .nav-inner{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:14px 28px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.3px}
+    .brand .logo{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,var(--pri),var(--sec))}
+    .brand span{font-size:18px}
+    .nav-links{display:flex;gap:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;gap:10px;align-items:center;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:#0f1730;color:var(--text);box-shadow:var(--shadow)}
+    .btn.pri{background:linear-gradient(135deg,var(--pri),var(--sec));color:#04222a;border:none}
+    .hero{padding:56px 28px 20px}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .badge{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--muted);font-size:13px}
+    h1{font-size:40px;line-height:1.15;margin:16px 0 10px}
+    .lead{color:var(--muted);font-size:18px;max-width:42ch}
+    .panel{border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-visual{min-height:260px;display:grid;place-items:center;padding:18px}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .card{padding:22px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01))}
+    .card h3{margin:8px 0 6px;font-size:18px}
+    .muted{color:var(--muted)}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .stat{padding:18px 16px;border:1px dashed var(--line);border-radius:14px;background:rgba(255,255,255,.03);text-align:center}
+    .stat b{font-size:24px;display:block}
+    .section{padding:28px}
+    .section h2{font-size:26px;margin:6px 0 12px}
+    .footer{margin:40px 0 0;padding:28px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);display:inline-block}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .ic{width:18px;height:18px;display:inline-block;vertical-align:-3px}
+    @media (max-width:980px){.hero .wrap{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="brand">
-          <div class="brand-badge">E</div>
-          <div>EMSI · École Marocaine des Sciences de l’Ingénieur</div>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">
+          <!-- simple SVG gear -->
+          <svg class="ic" viewBox="0 0 24 24" fill="#02131a"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm9.4 4a7.5 7.5 0 00-.1-1l2.1-1.6-2-3.5-2.5 1a8 8 0 00-1.7-1L16.8 2h-4.1l-.4 2.8a8 8 0 00-1.7 1l-2.5-1-2 3.5 2.1 1.6a7.5 7.5 0 000 2l-2.1 1.6 2 3.5 2.5-1a8 8 0 001.7 1l.4 2.8h4.1l.4-2.8a8 8 0 001.7-1l2.5 1 2-3.5-2.1-1.6a7.5 7.5 0 00.1-1z"/></svg>
         </div>
-        <div class="nav-links">
-          <a href="#programmes">Programmes</a>
-          <a href="#campus">Campus</a>
-          <a href="#admission">Admission</a>
-          <a href="#contact">Contact</a>
+        <span>EMSI</span>
+      </div>
+      <div class="nav-links">
+        <a href="#programmes">Programmes</a>
+        <a href="#vie">Vie étudiante</a>
+        <a href="#admission">Admissions</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn pri" href="#admission">Candidater</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="badge">🎓 École Marocaine des Sciences de l’Ingénieur</span>
+        <h1>Formez-vous aux métiers d’avenir : <span style="background:linear-gradient(90deg,var(--pri),var(--sec));-webkit-background-clip:text;background-clip:text;color:transparent">IA, Cloud, Industrie 4.0</span></h1>
+        <p class="lead">Des formations d’ingénieurs orientées projet, un réseau d’entreprises partenaires et des campus à l’échelle nationale.</p>
+        <div class="cta">
+          <a class="btn pri" href="#admission">👋 Déposer une candidature</a>
+          <a class="btn" href="#programmes">Voir les programmes</a>
         </div>
-      </nav>
+      </div>
+      <div class="panel hero-visual">
+        <!-- decorative illustration -->
+        <svg viewBox="0 0 600 320" width="100%" height="100%" role="img" aria-label="Ingénierie et innovation">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1"><stop stop-color="#00d1ff"/><stop offset="1" stop-color="#00b894"/></linearGradient>
+          </defs>
+          <rect x="20" y="30" width="560" height="200" rx="16" fill="none" stroke="url(#g1)" stroke-width="2"/>
+          <g opacity=".9">
+            <circle cx="120" cy="130" r="46" fill="none" stroke="#2ad1ff" />
+            <circle cx="200" cy="130" r="46" fill="none" stroke="#11c3a4" />
+            <circle cx="160" cy="170" r="30" fill="none" stroke="#2ad1ff" />
+          </g>
+          <g opacity=".9">
+            <rect x="320" y="80" width="200" height="120" rx="12" fill="none" stroke="#2ad1ff"/>
+            <path d="M340 110h160M340 140h120M340 170h80" stroke="#11c3a4" stroke-width="3"/>
+          </g>
+        </svg>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <span class="tag">Ingénierie · Innovation · Impact</span>
-        <h1 class="headline">Construisez l’avenir avec l’excellence de l’ingénierie</h1>
-        <p class="sub">Rejoignez une communauté d’enseignants, de chercheurs et d’étudiants engagés pour la transformation technologique et industrielle.</p>
-        <div style="display:flex;gap:12px;margin-top:18px">
-          <a class="btn btn-primary" href="#admission">Candidater maintenant</a>
-          <a class="btn" href="#programmes">Découvrir les programmes</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1480&auto=format&fit=crop" alt="Étudiants en ingénierie" style="width:100%;border-radius:12px;display:block" />
-      </div>
-    </section>
-
-    <section class="section" id="programmes">
-      <h2>Programmes phares</h2>
-      <div class="grid-3" style="margin-top:12px">
-        <div class="card">
-          <h3>Génie Informatique</h3>
-          <p class="sub">Logiciels, IA, cloud et cybersécurité : les compétences au cœur de la transformation numérique.</p>
-        </div>
-        <div class="card">
-          <h3>Génie Industriel</h3>
-          <p class="sub">Excellence opérationnelle, supply chain et 4.0 pour booster la performance des organisations.</p>
-        </div>
-        <div class="card">
-          <h3>Réseaux & Télécoms</h3>
-          <p class="sub">Infrastructures, 5G et IoT pour connecter le monde de demain.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="campus">
-      <h2>La vie sur nos campus</h2>
-      <div class="grid-3" style="margin-top:12px">
-        <div class="card"><b>Clubs techniques</b><p class="sub">Robotics, DevOps, Data — apprendre en créant.</p></div>
-        <div class="card"><b>Événements</b><p class="sub">Hackathons, conférences, challenges d’innovation.</p></div>
-        <div class="card"><b>Accompagnement</b><p class="sub">Encadrement projets, soft skills, carrière & stages.</p></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="stats">
-        <div class="stat"><b>+30</b><span>Années d’expertise</span></div>
-        <div class="stat"><b>+10k</b><span>Lauréats</span></div>
-        <div class="stat"><b>+20</b><span>Clubs & associations</span></div>
-        <div class="stat"><b>100%</b><span>Ambition et esprit d’ingénieur</span></div>
-      </div>
-    </section>
-
-    <section class="section" id="admission">
-      <div class="card">
-        <h2>Admission</h2>
-        <p class="sub">Vous souhaitez candidater ? Préparez votre dossier et renforcez-le par vos réalisations (projets, compétitions, stages, implication associative).</p>
-        <div style="margin-top:10px">
-          <a class="btn btn-primary" href="#contact">Prendre contact</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer id="contact">
-    <div class="container">
-      © EMSI — École Marocaine des Sciences de l’Ingénieur · Page vitrine déployée via Kubernetes + Flux
+  <!-- STATS -->
+  <section class="section">
+    <div class="container stats">
+      <div class="stat"><b>30+ ans</b><span class="muted">d’excellence académique</span></div>
+      <div class="stat"><b>18</b><span class="muted">campus au Maroc</span></div>
+      <div class="stat"><b>100+</b><span class="muted">partenaires industriels</span></div>
+      <div class="stat"><b>15k+</b><span class="muted">lauréats</span></div>
     </div>
+  </section>
+
+  <!-- PROGRAMMES -->
+  <section id="programmes" class="section">
+    <div class="container">
+      <h2>Programmes d’ingénierie</h2>
+      <p class="muted">Des filières conçues avec et pour l’industrie, alliant théorie, pratique et projets.</p>
+      <div class="grid cols-3" style="margin-top:14px">
+        <div class="card"><span class="tag">Informatique & IA</span><h3>Génie Informatique</h3><p class="muted">Logiciel, DevOps, Cloud, Data & IA, cybersécurité.</p></div>
+        <div class="card"><span class="tag">Télécoms</span><h3>Réseaux & Systèmes</h3><p class="muted">Réseaux, 5G, virtualisation, systèmes distribués.</p></div>
+        <div class="card"><span class="tag">Industriel</span><h3>Génie Industriel</h3><p class="muted">Lean, supply chain, qualité, transformation 4.0.</p></div>
+        <div class="card"><span class="tag">BTP</span><h3>Génie Civil</h3><p class="muted">Structures, BIM, éco-construction, infrastructures.</p></div>
+        <div class="card"><span class="tag">Électronique</span><h3>Systèmes Embarqués</h3><p class="muted">IoT, robotique, temps réel, hardware & capteurs.</p></div>
+        <div class="card"><span class="tag">Data</span><h3>FinTech & Data</h3><p class="muted">Analyse, ML appliqué, sécurité et conformité.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIE ÉTUDIANTE -->
+  <section id="vie" class="section">
+    <div class="container grid cols-2">
+      <div class="panel" style="padding:22px">
+        <h2>Vie étudiante</h2>
+        <p class="muted">Clubs tech, compétitions, hackathons, junior-entreprises, associations… Développez vos soft skills et votre réseau.</p>
+        <ul>
+          <li>🏆 <b>Clubs & compétitions</b> : robotique, IA, cybersécurité…</li>
+          <li>🤝 <b>Partenariats</b> : stages, projets co-encadrés, mentors.</li>
+          <li>🚀 <b>Innovation</b> : fablabs, incubateur & entrepreneuriat.</li>
+        </ul>
+      </div>
+      <div class="panel" style="padding:22px">
+        <h2>Accompagnement</h2>
+        <p class="muted">Du premier jour à l’embauche : coaching, ateliers CV, job dating et ancien(ne)s.</p>
+        <div class="grid cols-2" style="margin-top:8px">
+          <div class="card"><h3>Carrière</h3><p class="muted">Career center & empleur·euse·s partenaires.</p></div>
+          <div class="card"><h3>International</h3><p class="muted">Doubles diplômes & échanges académiques.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMISSIONS -->
+  <section id="admission" class="section">
+    <div class="container panel" style="padding:22px">
+      <h2>Admissions</h2>
+      <p class="muted">Candidature en ligne, étude du dossier et entretien. Sessions d’admission tout au long de l’année.</p>
+      <div class="cta">
+        <a class="btn pri" href="#">Candidater maintenant</a>
+        <a class="btn" href="#">Télécharger la brochure</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact" class="footer container">
+    <div>© EMSI — École Marocaine des Sciences de l’Ingénieur</div>
+    <div class="muted">Contact : contact@exemple-emsi.ma · +212 5XX XX XX XX</div>
   </footer>
 </body>
 </html>
+
