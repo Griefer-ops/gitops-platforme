@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: nginx-demo
-          image: nginx:stable
+          image: ghcr.io/ton-org/ton-app:1.0.0
           ports:
             - containerPort: 80
