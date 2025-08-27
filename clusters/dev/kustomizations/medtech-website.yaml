@@ -1,0 +1,18 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: medtech-website
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./apps/medtech-website/overlays/dev
+  prune: true
+  wait: true
+  timeout: 5m
+  dependsOn:
+    - name: metallb-config
+  targetNamespace: medtech
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
