@@ -16,6 +16,14 @@ spec:
     spec:
       containers:
         - name: nginx-demo
-          image: ghcr.io/ton-org/ton-app:1.0.0
+          image: nginx:stable
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: web-content
+              mountPath: /usr/share/nginx/html
+              readOnly: true
+      volumes:
+        - name: web-content
+          configMap:
+            name: nginx-html
